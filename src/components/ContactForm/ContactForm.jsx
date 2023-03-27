@@ -50,7 +50,7 @@ const ContactForm = () => {
   const onSubmit = data => {
     const { name } = data;
 
-    if (checkContscts(contacts[0], data)) {
+    if (checkContscts(contacts, data)) {
       dispatch(addContact(data));
       reset();
     } else {

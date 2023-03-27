@@ -13,16 +13,14 @@ import { getContacts, getStatusFilter } from 'redux/seletors';
 import { deleteContact } from 'redux/contactSlice';
 import { setFilter } from 'redux/filterSlice';
 
-const contactsFilter = (arr, name) =>{
-    if(name === '') return arr;
-    return arr.filter(e => e.name.toLowerCase().includes(name.toLowerCase()))
-  };
+const contactsFilter = (arr, name) =>
+  arr.filter(e => e.name.toLowerCase().includes(name.toLowerCase()));
 
 const Contacts = () => {
   const contacts = useSelector(getContacts);
   const filter = useSelector(getStatusFilter);
   const dispatch = useDispatch();
-  const visibleContacts = contactsFilter(contacts[0], filter);
+  const visibleContacts = contactsFilter(contacts, filter);
 
   const handleFilterChange = e => dispatch(setFilter(e.target.value));
 
@@ -46,6 +44,5 @@ const Contacts = () => {
     </Container>
   );
 };
-
 
 export default Contacts;
